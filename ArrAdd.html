@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,4,5];
+        document.write(arr + '<br/>');
+        
+        // 배열 끝에 인자 하나 추가
+        arr.push(6);
+        document.write(arr + '<br />');
+
+        // 배열 끝에 여러개 인자 추가
+        arr.push(6,7);
+        document.write(arr + '<br />');
+
+        // 배열 끝에 여러개 인자를 배열에 담아서 추가
+        arr.push([6,7]);
+        document.write(arr + '<br />');
+
+        //배열 끝에 배열을 추가 할 때 concat을 이용해서도 추가 가능
+        // concat 사용 할 때는 배열에 다시 넣어줘야한다 밑에와 같이
+        arr = arr.concat([8,9]);
+        document.write(arr + '<br />');
+
+        //배열 처음에 인자 추가
+        arr.unshift(100);
+        document.write(arr + '<br />');
+
+    </script>
+</body>
+</html>

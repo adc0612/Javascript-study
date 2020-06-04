@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = ['y','ad','fdg','ar'];
+        document.write(arr + '<br/>');
+
+        // 배열 알바펫순으로 정렬
+        arr.sort();
+        document.write(arr + '<br />');
+
+        var numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
+        // 숫자를 정렬할 떄는 그냥 정렬하면 1다음 2가 와야하는데 1다음 10이 온다.
+        numbers.sort();
+        document.write(numbers + '<br />');
+
+        var numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
+        //아래 처럼 sortNumberAsc 함수에 아래와 같이 하면 정상적으로 1 다음 2가 온다.
+        function sortNumberAsc(a,b){
+            // 비교 대상인 a와 b가 인자로 전달된다.
+            //alert('a :'+a+', b:'+b);
+            // a에서 b를 뺀 결과가 음수면 a가 b보다 작고, 0이면 같다.
+            // sort메소드는 return 값이 음수,양수,0인지에 따라서 순서를 정한다.
+            return a-b;
+        }
+        numbers.sort(sortNumberAsc); // array, [1,2,3,4,5,6,7,8,9,10,20]
+        document.write(numbers + '<br />');
+
+        var numbers = [20, 10, 9,8,7,6,5,4,3,2,1];
+        //아래 처럼 sortNumberAsc 함수에 아래와 같이 하면 반대로 정상적으로 2 다음 1이 온다.
+        function sortNumberDesc(a,b){
+            // 위의 예제와 비교해서 a와 b의 순서를 바꾸면 정렬순서가 반대가 된다.
+            return b-a;
+        }
+        numbers.sort(sortNumberDesc); // array, [1,2,3,4,5,6,7,8,9,10,20]
+        document.write(numbers + '<br />');
+
+    </script>
+</body>
+
+</html>
