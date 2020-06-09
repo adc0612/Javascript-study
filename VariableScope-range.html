@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Java script에서는 함수(function)내에서만 지역변수가 생성이 된다.
+        //그래서 for loop, if, 문 등등에서는 변수 선언한것은 중괄호가 닫혀도 사용이 가능하다.
+        //이점이 다른 언어랑은 다르다.
+        for(var i=0;i<1;i++){
+            var name = 'coding everybody';
+        }
+        alert(name);
+
+        
+        var j = 5;
+        function a() {
+            var j = 10;
+            b();
+        }
+        function b() {
+            document.write(j);
+        }
+        a();
+    </script>
+</body>
+</html>
