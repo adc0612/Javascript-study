@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //객체(object)선언
+        var students={
+            's1': '1st',
+            's2': '2nd',
+            's3': '3rd'
+        };
+        //아래와 같이 배열처럼 불러올 수 있다.
+        document.write(students['s1']);
+        //보통 아래와 같이 불러온다.
+        document.write(students.s1);
+
+        //for in 문으로 모든객체를 하나씩 출력한다.
+        for (key in students) {
+            document.write("key: "+key+" value: "+students[key]+"<br/>");
+        }
+
+        //key 대신 변수를 선언해서도 사용 가능
+        for (let name in students) {
+            document.write("key: "+name+" value: "+students[name]+"<br />");
+        }
+
+        var grades = {
+            'list': {
+                's1': '1st',
+                's2': '2nd',
+                's3': '3rd'
+            },
+            'show': function(){
+                for (let name in this.list){
+                    console.log(name,this.list[name]);
+                }
+            }
+        }
+        grades.show();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //http나 https로 된 URL을 찾아주는 RegExp다.
+        var urlPattern = /\b(?:https?):\/\/[a-z0-9-+&@#\/%?=~_|!:,.;]*/gim;
+        //content안에는 https://daum.net 이랑 http://naver.com 이 있다. 그 2개를 바꿔준다.
+        var content = '다음 : https://daum.net 입니다. 네이버 : http://naver.com 입니다. ';
+        //result 안에 아래 Function을 통해 https://daum.net과 http://naver.com을 <a>태그 안에 넣어서 html a tag로 바꿔준다.
+        var result = content.replace(urlPattern, function (url) {
+            //regExp로 찾은 url을 <a>태그 안 href속성으로 넣어주고 텍스트도 url로 바꿔준다.
+            return '<a href="' + url + '">' + url + '</a>';
+        });
+        console.log(result);
+    </script>
+</body>
+
+</html>

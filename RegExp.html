@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //a를 찾아서 배열로 전달
+        var pattern = /a/;
+        //exec 는 regExp 리턴하는 함수
+        console.log(pattern.exec('abcdef'));
+        //a를 찾아서 그다음 문자 하나를 같이 배열로 전달
+        pattern = /a./;
+        console.log(pattern.exec('abcdef'));
+        //test는 주어진 regExp값이 주어지는 문자열에 있는지 없는지를 판단하여 true false 전달
+        console.log(pattern.test('abcdef'));
+
+        var str = 'absdsc';
+        //match는 match앞 변수에 주어진 regExp값에 match가 되면 match된 문자를 배열로 반환
+        //없으면 null로 반환
+        console.log(str.match(pattern));
+        //replace는 replace앞 변수에 주어진 regExp값에 해당되는 문자를 찾고 , 다음 오는 문자로 replace를 한다.
+        console.log(str.replace(pattern,'A'));
+
+    </script>
+</body>
+</html>

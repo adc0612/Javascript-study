@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //option i 안 붙힌 regExp
+        //대소문자 상관 하여 대소문자 맞춰서 결과 출력함
+        var xi = /a/;
+        console.log('dsfefA'.match(xi));
+        //option i를 붙힌 RegExp
+        //option i를 붙히면 대소문자 관계없이 regExp 조건을 실행
+        var oi = /a/i;
+        console.log('dsfefA'.match(oi));
+        
+        //option g를 안 붙힌 regExp
+        //중복문자 있어도 단 하나 문자만 배열에 저장되어 출력
+        var xg = /a/;
+        console.log('ewewatada'.match(xg));
+        //option g를 붙힌 RegExp
+        //중복문자 있어도 있는 문자를 다 출력한다.
+        var og = /a/g;
+        console.log('ewewatada'.match(og));
+
+        //option을 한번에 사용가능
+        //i와 g를 붙히면 대소문자 상관없이 중복된 문자가 있어도 상관없이 다 출력
+        var oig = /a/ig;
+        console.log('ewewAtada'.match(oig));
+    </script>
+</body>
+</html>

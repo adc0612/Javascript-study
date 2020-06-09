@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //아래 regExp 설명
+        //(\w+)는 A~Z a~z 0~9가 들어있는 문자열을 뜻함
+        // \s는 공백 즉 space를 뜻함
+        //그래서 아래 RegExp 설명은 단어와 단어 사이에 공백이 있는 애들을 뜻함
+        var pattern = /(\w+)\s(\w+)/;
+        //밑에 str에 들은 code together가 위에 RegExp조건에 속함
+        var str = "code together";
+        //str을 pattern RegExp에 속하므로 "$2, $1"으로 출력함
+        // $2는 두번째에 있는 단어이고 $1은 첫번째 단어이다.
+        // "$2, $1"은 두번째 오는 단어 사이에 , 와 공백을 넣고 그다음에 첫번째 오는 단어를 넣는다.
+        var result = str.replace(pattern,"$2, $1");
+        //그래서 결과는 together, code가 result변수에 담겨 출력된다.
+        console.log(result);
+    </script>
+</body>
+</html>
