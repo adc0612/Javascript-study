@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var v1 = 'global';
+        //fscope1() 함수 안에 var로 v1를 선언 한 뜻은 
+        //fscope1() 함수 안에 v1를 local변수로 새로 선언 한 것이다.
+        //그래서 함수 안에서 v1를 불렀을때는 함수 내에서 지정한 'local'이 프린트 된다. 
+        function fscope1(){
+            var v1 = 'local';
+            alert('함수 안'+v1);
+        }
+        fscope1();
+        //하지만 함수 밖에서의 v1은 함수내에서 지정한 local이 아니라 global 변수인 v1를 불러 오는 것이므로 'global'이 프린트 된다.
+        alert('함수 밖 '+v1);
+
+        var v2 = 'global';
+        //fscope2() 함수 안에 var로 v2를 선언 한 것이 아니라 global 변수 v2에 'local'값을 삽입한것이다 
+        //함수 안에서 v2를 불렀을때는 함수 내에서 지정한 'local'이 프린트 된다. 
+        function fscope2(){
+            v2 = 'local';
+            alert('함수 안 '+v2);
+        }
+        fscope2();
+        //함수 밖에 v2를 호출했을때는 이미 global변수인 v2가 함수 호출하면서 'local'값으로 바뀌어서
+        //'local'이 출력된다.
+        alert('함수 밖 '+v2);
+    </script>
+</body>
+</html>

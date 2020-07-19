@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //전역변수로 MYAPP객체를 선언
+        MYAPP = {};
+        MYAPP.calculator = {
+            'left': null,
+            'right': null
+        };
+        MYAPP.coordinator = {
+            'left': null,
+            'right': null
+        };
+
+        MYAPP.calculator.left = 10;
+        MYAPP.calculator.right = 20;
+        function sum() {
+            return MYAPP.calculator.left + MYAPP.calculator.right;
+        }
+        document.write(sum());
+
+        //익명함수를 호출
+        (function () {
+            var MYAPP = {}
+            MYAPP.calculator = {
+            'left' : null,
+            'right' : null
+            }
+            MYAPP.coordinate = {
+            'left' : null,
+            'right' : null
+            }
+            MYAPP.calculator.left = 10;
+            MYAPP.calculator.right = 20;
+            function sum(){
+            return MYAPP.calculator.left + MYAPP.calculator.right;
+            }
+            document.write(sum());
+        }());
+    </script>
+</body>
+</html>
