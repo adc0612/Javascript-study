@@ -22,7 +22,9 @@ log('hello');
 function changeName(obj) {
     obj.name = 'coder';
 }
-const p1 = {name: 'name1'};
+const p1 = {
+    name: 'name1'
+};
 changeName(p1);
 log(p1.name);
 
@@ -31,7 +33,7 @@ log(p1.name);
 // 인자를 한개만 받았을 경우 undefined라고 뜬다.
 // 아래 함수 호출 결과는 hi by unknown이다.
 // ES6부터는 인자를 받지 않을때를 대비해 default parameter값을 설정할수있다.
-function showMsg(msg='hyo', from='person'){
+function showMsg(msg = 'hyo', from = 'person') {
     console.log(`${msg} by ${from}`);
 }
 showMsg('hi');
@@ -45,20 +47,20 @@ function printAll(...args) {
         console.log(args[i]);
     }
     // for loop 접근방법2
-    for(const arg of args){
+    for (const arg of args) {
         console.log(arg);
     }
     // for loop 접근방법3
     args.forEach((arg) => console.log(arg));
 }
 
-printAll('1st P','2nd P','4th p');
+printAll('1st P', '2nd P', '4th p');
 
 // 5. return a value
-function sum(a,b) {
-    return (a+b);
+function sum(a, b) {
+    return (a + b);
 }
-const result = sum(1,2);
+const result = sum(1, 2);
 console.log(`sum: ${result}`);
 
 // 6. early return, early exit
@@ -66,13 +68,13 @@ console.log(`sum: ${result}`);
 // 조건이 안 맞을때 return하여 함수를 빨리 exit하고 아닐때 로직을 거는 것이 가독성에 더 좋다.
 // bad
 function upgradeUser(statusVal) {
-    if (statusVal>10){
+    if (statusVal > 10) {
         // long upgrade logic...
     }
 }
 // good
 function upgradeUser(statusVal) {
-    if (statusVal<= 10){
+    if (statusVal <= 10) {
         return;
     }
     // long upgrade logic...
@@ -97,30 +99,30 @@ print();
 const printAgain = print;
 printAgain();
 const sumAgain = sum;
-console.log(sumAgain(4,5));
+console.log(sumAgain(4, 5));
 
 // 2.callback function using function expression
-function randomQuiz(ans,printYes,printNo) {
-    if (ans === 'korea'){
+function randomQuiz(ans, printYes, printNo) {
+    if (ans === 'korea') {
         printYes();
-    }else{
+    } else {
         printNo();
     }
 }
 // anonymus function
-const printYes = function(){
+const printYes = function () {
     console.log('yes');
 }
 // named function
 // better debugging in debugger's stack traces
 // recursion
-const printNo = function print(){
+const printNo = function print() {
     console.log('no');
     // 아래 처럼 print()함수를 선언하고 그안에다 print()함수를 다시 선언하면 recursion발생
     // print();
 }
-randomQuiz('japan',printYes,printNo);
-randomQuiz('korea',printYes,printNo);
+randomQuiz('japan', printYes, printNo);
+randomQuiz('korea', printYes, printNo);
 
 // arrow function (added in ES6)
 // always anonymus
@@ -131,7 +133,7 @@ const simplePrint = function () {
 const simplePrintAr = () => console.log('simple pirnt');
 // const add = (a,b) => a+b;
 // 아래와 같이 중괄호를 쓰게 되면 return이 꼭 필요!
-const simpleMultiply = (a,b) => {
+const simpleMultiply = (a, b) => {
     // do something more
     return a * b;
 }
@@ -150,27 +152,51 @@ simplePrintAr();
 
 function calculate(command, a, b) {
     let res;
-    if (command === 'add'){
-        res = add(a,b);
-    }else if (command === 'subtract'){
-        res = subtract(a,b);
-    }else if (command === 'multiply'){
-        res = multiply(a,b);
-    }else if (command==='divide'){
-        res = divide(a,b);
-    }else{
+    if (command === 'add') {
+        res = add(a, b);
+    } else if (command === 'subtract') {
+        res = subtract(a, b);
+    } else if (command === 'multiply') {
+        res = multiply(a, b);
+    } else if (command === 'divide') {
+        res = divide(a, b);
+    } else {
         res = "error";
     }
     printres(res);
 }
 
-const add = (a,b) => a+b;
-const subtract = (a,b) => a-b;
-const multiply = (a,b) => a*b;
-const divide = (a,b) => a/b;
+function calculateSW(command, a, b) {
+    let res;
+    switch (command) {
+        case 'add':
+            return a + b;
+        case 'subtract':
+            return a - b;
+        case 'multiply':
+            return a * b;
+        case 'divide':
+            return a / b;
+        case 'remainder':
+            return a % b;
+        default:
+            throw Error('unknown command');
+    }
+}
+
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => a / b;
 const printRes = (val) => console.log(val);
 
-calculate('add',4,5);
-calculate('subtrack',4,5);
-calculate('multiply',4,5);
-calculate('divide',4,5);
+calculate('add', 4, 5);
+calculate('subtrack', 4, 5);
+calculate('multiply', 4, 5);
+calculate('divide', 4, 5);
+
+console.log(calculateSw('add', 4, 5));
+console.log(calculateSw('subtrack', 4, 5));
+console.log(calculateSw('multiply', 4, 5));
+console.log(calculateSw('divide', 4, 5));
+console.log(calculateSw('remainder', 4, 5));

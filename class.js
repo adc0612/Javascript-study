@@ -39,31 +39,32 @@ class User {
         this._age = val < 0 ? 0 : val;
     }
 }
-const user1 = new User('bob','tomey',-43);
+const user1 = new User('bob', 'tomey', -43);
 console.log(user1.age);
 
 // 3. Fields(public, private)
 // Too Soon! 생긴지 얼마안 됨 최신브라우저도 지원 안 되는 브라우저가 많음
-class Experiment{
+class Experiment {
     publicField = 2;
     // 변수 앞에 #을 붙여주면 Private field로 전환
-    #privateField = 19;
+    #
+    privateField = 19;
 }
 const experiment = new Experiment();
-console.log(experiment.publicField); 
+console.log(experiment.publicField);
 console.log(experiment.privateField);
 
 // 4. Static properties and methods
 // Too Soon!
 // Object에 상관없이 공통으로 class에서 사용되는것을 static 사용
 // 메모리 할당에도 좋음
-class Article{
+class Article {
     static publisher = "1st hahaha";
-    constructor(articleNumber){
+    constructor(articleNumber) {
         this.articleNumber = articleNumber;
     }
 
-    static printPublisher(){
+    static printPublisher() {
         console.log(Article.publisher);
     }
 }
@@ -83,41 +84,41 @@ Article.printPublisher();
 
 // 5. Inheritance
 // a way of for one class to extend another class
-class Shape{
-    constructor (width,height,color){
+class Shape {
+    constructor(width, height, color) {
         this.width = width;
         this.height = height;
         this.color = color;
     }
-    draw(){
+    draw() {
         console.log(`drawing ${this.color} color`);
     }
-    getArea(){
+    getArea() {
         return this.width * this.height;
     }
 }
 
 // 새로운 class에서 extends를 하면 Shape의 constructor & methods를 가져온다.
-class Rectangle extends Shape{}
+class Rectangle extends Shape {}
 
-const rectangle1 = new Rectangle(20,40,'blue');
+const rectangle1 = new Rectangle(20, 40, 'blue');
 rectangle1.draw();
 console.log(rectangle1.getArea());
 
-class Triangle extends Shape{
-    // 같은 methods를 재정의 해줄 수 있다. 
+class Triangle extends Shape {
+    // 같은 methods를 재정의 해줄 수 있다. Overriding!!
     // 재정의를 하면 extends한 class의 methods를 덥어씌기하므로 extends한 class의 methods는 지워진다.
-    // super를 쓰면 extends된 class methods도 불러오면서 새로운 methods도 같이 사용된다.
-    draw(){
+    // super를 쓰면 extends된 class methods도 불러오면서 새로운 methods도 같이 사용된다. 
+    draw() {
         super.draw();
         console.log('triangle');
     }
-    getArea(){
-        return (this.width * this.height)/2;
+    getArea() {
+        return (this.width * this.height) / 2;
     }
 }
 
-const triangle1 = new Triangle(20,40,'red');
+const triangle1 = new Triangle(20, 40, 'red');
 triangle1.draw();
 console.log(triangle1.getArea());
 
@@ -127,4 +128,3 @@ console.log(triangle1 instanceof Rectangle);
 console.log(triangle1 instanceof Triangle);
 console.log(triangle1 instanceof Shape);
 console.log(triangle1 instanceof Object);
-
