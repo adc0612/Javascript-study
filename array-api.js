@@ -18,7 +18,7 @@
     // 두번째 인자값을 2로 줄 시 size가 2인 배열이 생성되며 2개의 인자만 들어간다.
     const result = fruits.split(', ');
     console.log(result);
-    const result2 = fruits.split(', ',2);
+    const result2 = fruits.split(', ', 2);
     console.log(result2);
 }
 
@@ -43,10 +43,10 @@
     // slice: 배열안의 start(첫번째 인자)index 부터 end(두번째 인자)index까지 item들을 반환한다.
     // 그 결과 result2는 array배열의 2번째부터 5번째 까지의 값들이 들어있다. 그래서 안에 들어있는 배열은 [3,4,5] 
     // *** end index의 item은 배제 되므로 해야하는 end index 값의 +1 해서 end값을 정한다.
-    const result2 = array.slice(2,5);
+    const result2 = array.slice(2, 5);
     console.log(array);
     console.log(result2);
-    const result = array.splice(2,3);
+    const result = array.splice(2, 3);
     console.log(array);
     console.log(result);
 }
@@ -71,7 +71,7 @@ const students = [
 {
     // find: 인자로 함수를 전달하고 함수조건에 맞는 요소를 찾으면 그 값을 반환하고 아니면 false를 반환한다.
     // const result = students.find((student, index) => console.log(student,index));
-    const result = students.find((student) => student.score ===90);
+    const result = students.find((student) => student.score === 90);
     console.log(result);
 }
 
@@ -92,18 +92,53 @@ const students = [
 
 // Q8. check if there is a student with the score lower than 50
 {
+    // some: 인자로 함수를 전달하고 item중 하나 만이라도 함수안에 만족한 조건일때 true or false 반환
+    const result = students.some(function (student) {
+        return student.score < 50;
+    });
+    // every: 인자로 함수를 전달하고 item 모두 함수안에 만족한 조건일때 true or false 반환
+    const result2 = students.every((student) => student.score > 50);
+    console.log(result);
+    console.log(result2);
 }
 
 // Q9. compute students' average score
 {
+    // reduce: 인자로 함수를 전달, 축적된 값을 얻을 수 있음;
+    // 두번째 인자로는 default 값을 전달 (모든 score의 합을 구하기 위해 default값은 0으로 전달)
+    // return 되는 curr가 prev로 다시 들어가면서 callback function이 진행
+    // reduceRight: reduce는 앞에서 부터 순차적으로 했다면 reduceRight는 뒤에서 부터 순차적으로 진행
+    const result = students.reduce((prev, curr) => prev + curr.score, 0)
+    const result2 = students.reduceRight((prev, curr) => prev + curr.score, 0)
+    console.log(result);
+    console.log(result2);
+    console.log(result / students.length);
 }
 
 // Q10. make a string containing all the scores
 // result should be: '45, 80, 90, 66, 88'
 {
+    // 이렇게 여러개 api를 중첩해서 쓸수 있다.
+    const result = students
+        .map((student) => student.score)
+        .filter((score) => score >= 50)
+        .join();
+    console.log(result);
 }
 
 // Bonus! do Q10 sorted in ascending order
 // result should be: '45, 66, 80, 88, 90'
 {
+    // sort: 인자로 함수를 전달 함수의 인자를 a,b로 전달받고 a-b면 asc order b-a면 desc order로 정렬된다. 
+    const result = students
+        .map((student) => student.score)
+        .sort((a,b) => a-b)
+        .join();
+    const result2 = students
+        .map((student) => student.score)
+        .sort((a,b) => b-a)
+        .join();
+    console.log(result);
+    console.log(result2);
+
 }
